@@ -16,23 +16,19 @@ public class Day3 {
             List<Integer> numbers = new ArrayList<>();
             while (number != null) {
                 for (int i = 0; i < number.length(); i++) {
-                    int num = number.charAt(i);
-                    System.out.println(num);
+                    int num = Integer.parseInt(Character.toString(number.charAt(i)));
                     numbers.add(num);
                 }
                 number = r.readLine();
             }
 
-            List<Integer> herm = new ArrayList<Integer>();
-            herm.add(0);
-            herm.add(1);
+            List<Integer> herm = new ArrayList<>();
             //Split
             List<Integer> results = new ArrayList<>();
             for (int i = 0; i < 12; i++) {
-                if (Collections.frequency(numbers.subList(i, i * 1000), 0) < Collections.frequency(numbers.subList(i, i * 1000), 1)) {
-                    results.add(1);
-                } else {
-                    results.add(0);}
+                for (int u = 0; u<numbers.size(); u++){
+
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
