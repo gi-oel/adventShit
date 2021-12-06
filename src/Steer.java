@@ -9,15 +9,15 @@ public class Steer {
         try {
             BufferedReader r = new BufferedReader(new FileReader(Paths.get("steer.txt").toFile()));
             String command = r.readLine();
-            int x = 0;
-            int y = 0;
-            int aim = 0;
+            long x = 0;
+            long y = 0;
+            long aim = 0;
             while (command != null) {
                 String[] commands = command.split(" ");
                 if (Objects.equals(commands[0], "forward")) {
                     x += Integer.parseInt(commands[1]);
                     if (aim != 0) {
-                        y = x * aim;
+                        y += Integer.parseInt(commands[1]) * aim;
                     }
                 } else if (Objects.equals(commands[0], "up")) {
                     aim -= Integer.parseInt(commands[1]);
@@ -28,7 +28,7 @@ public class Steer {
             }
             System.out.println("X = " + x);
             System.out.println("Y = " + y);
-            long sol = (long) x * y;
+            long sol = x * y;
             System.out.println("Solution: " + sol);
 
         } catch (IOException e) {
