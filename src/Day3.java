@@ -17,6 +17,7 @@ public class Day3 {
             while (number != null) {
                 for (int i = 0; i < number.length(); i++) {
                     int num = number.charAt(i);
+                    System.out.println(num);
                     numbers.add(num);
                 }
                 number = r.readLine();
@@ -25,15 +26,13 @@ public class Day3 {
             List<Integer> herm = new ArrayList<Integer>();
             herm.add(0);
             herm.add(1);
-            System.out.println(herm.size());
             //Split
             List<Integer> results = new ArrayList<>();
             for (int i = 0; i < 12; i++) {
-                if (Collections.frequency(numbers.subList(i, i + 999), 0) < Collections.frequency(numbers.subList(i, i + 1000), 1)) {
+                if (Collections.frequency(numbers.subList(i, i * 1000), 0) < Collections.frequency(numbers.subList(i, i * 1000), 1)) {
                     results.add(1);
                 } else {
-                    results.add(0);
-                }
+                    results.add(0);}
             }
         } catch (IOException e) {
             e.printStackTrace();

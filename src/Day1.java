@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Day1 {
     public static void main(String[] args) {
         try {
             BufferedReader r = new BufferedReader(new FileReader(Paths.get("data.txt").toFile()));
