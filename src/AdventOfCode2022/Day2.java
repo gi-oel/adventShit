@@ -20,23 +20,25 @@ public class Day2 {
         String ganzerText = Files.readString(Paths.get("AdventOfCode2022Input/rockPaperScissor.txt"), StandardCharsets.UTF_8);
         String[] alleRunden = ganzerText.split("\r\n");
 
-        int punkteInsgesamt = 0;
+        int punkteInsgesamtTeil1 = 0;
+        int punkteInsgesamtTeil2 = 0;
         //Punkte berechnen für Wahl
         for (String runde : alleRunden) {
             String[] zug = runde.split(" ");
             switch (zug[1]) {
-                case "X" -> punkteInsgesamt += punkte.stein;
-                case "Y" -> punkteInsgesamt += punkte.papier;
-                case "Z" -> punkteInsgesamt += punkte.schere;
+                case "X" -> punkteInsgesamtTeil1 += punkte.stein;
+                case "Y" -> punkteInsgesamtTeil1 += punkte.papier;
+                case "Z" -> punkteInsgesamtTeil1 += punkte.schere;
+            }
+            if (zug[0].equals("A") && zug[1].equals("X") || zug[0].equals("B") && zug[1].equals("Y") || zug[0].equals("C") && zug[1].equals("Z")) {
+                punkteInsgesamtTeil1 += punkte.unentschieden;
+            } else if (zug[0].equals("A") && zug[1].equals("Y") || zug[0].equals("B") && zug[1].equals("Z") || zug[0].equals("C") && zug[1].equals("X")) {
+                punkteInsgesamtTeil1 += punkte.gewinn;
             }
 
-            if (zug[0].equals("A") && zug[1].equals("X") || zug[0].equals("B") && zug[1].equals("Y") || zug[0].equals("C") && zug[1].equals("Z")) {
-                punkteInsgesamt += punkte.unentschieden;
-            } else if (zug[0].equals("A") && zug[1].equals("Y") || zug[0].equals("B") && zug[1].equals("Z") || zug[0].equals("C") && zug[1].equals("X")) {
-                punkteInsgesamt += punkte.gewinn;
-            }
+
         }
 
-        System.out.println(punkteInsgesamt);
+        System.out.println("Punkte insgesammt Teil 1: " + punkteInsgesamtTeil1);
     }
 }
