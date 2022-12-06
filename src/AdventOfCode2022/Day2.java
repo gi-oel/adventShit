@@ -16,6 +16,12 @@ public class Day2 {
             final int gewinn = 6;
         };
 
+        var typ = new Object() {
+            final String gewinn = "Z";
+            final String unentschieden = "Y";
+            final String verloren = "X";
+        };
+
         //Datei auslesen
         String ganzerText = Files.readString(Paths.get("AdventOfCode2022Input/rockPaperScissor.txt"), StandardCharsets.UTF_8);
         String[] alleRunden = ganzerText.split("\r\n");
@@ -36,9 +42,32 @@ public class Day2 {
                 punkteInsgesamtTeil1 += punkte.gewinn;
             }
 
+            //Bemerken, ob gewonnen oder verloren
+            if (zug[1].equals(typ.gewinn)) {
+                punkteInsgesamtTeil2 += punkte.gewinn;
+                switch (zug[0]) {
+                    case "A" -> punkteInsgesamtTeil2 += punkte.papier;
+                    case "B" -> punkteInsgesamtTeil2 += punkte.schere;
+                    case "C" -> punkteInsgesamtTeil2 += punkte.stein;
+                }
+            } else if (zug[1].equals(typ.unentschieden)) {
+                punkteInsgesamtTeil2 += punkte.unentschieden;
+                switch (zug[0]) {
+                    case "A" -> punkteInsgesamtTeil2 += punkte.stein;
+                    case "B" -> punkteInsgesamtTeil2 += punkte.papier;
+                    case "C" -> punkteInsgesamtTeil2 += punkte.schere;
+                }
+            } else if (zug[1].equals(typ.verloren)) {
+                punkteInsgesamtTeil2 += punkte.verlieren;
+                switch (zug[0]) {
+                    case "A" -> punkteInsgesamtTeil2 += punkte.schere;
+                    case "B" -> punkteInsgesamtTeil2 += punkte.stein;
+                    case "C" -> punkteInsgesamtTeil2 += punkte.papier;
+                }
+            }
 
         }
-
-        System.out.println("Punkte insgesammt Teil 1: " + punkteInsgesamtTeil1);
+        System.out.println("Punkte insgesamt Teil 1: " + punkteInsgesamtTeil1);
+        System.out.println("Punkte insgesamt Teil 2: " + punkteInsgesamtTeil2);
     }
 }
