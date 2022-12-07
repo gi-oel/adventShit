@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Day1 {
+public class Tag1 {
     public static void main(String[] args) {
         try {
             String wholeText = Files.readString(Paths.get("AdventOfCode2022Input/calories.txt"), StandardCharsets.UTF_8);
