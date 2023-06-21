@@ -24,11 +24,17 @@ public class Tag5 {
                 List.of("H", "Q", "F", "B", "T", "M", "G", "N"),
                 List.of("W", "Q", "B", "P", "P", "C", "G", "D", "R")};
 
+        // Alle umdrehen, dass es einfacher ist
+        for (var stapel : alleStapel) {
+            Collections.reverse(stapel);
+        }
 
         // Durch alle Schritte durchgehen
         for (String schritt : alleSchritte) {
             // Schritt aufteilen um zu verstehen was zu tun ist. 1, 3, 5 wird gebraucht
             var anleitung = schritt.split(" ");
+
+
         }
     }
 }
