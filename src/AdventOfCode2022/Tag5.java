@@ -33,8 +33,33 @@ public class Tag5 {
         for (String schritt : alleSchritte) {
             // Schritt aufteilen um zu verstehen was zu tun ist. 1, 3, 5 wird gebraucht
             var anleitung = schritt.split(" ");
+            // 1 → Anzahl
+            int anzahl = Integer.parseInt(anleitung[1]);
+            // 3 → Start Ort
+            int start = Integer.parseInt(anleitung[3]);
+            // 5 → Zielort
+            int ziel = Integer.parseInt(anleitung[5]);
 
+            // Verschiebe anzahl
+            for (int i = 0; i < anzahl; i++) {
+                // Hole stück
+                var stueckStart = alleStapel[start].get(alleStapel[start].size() - 1);
+
+                // lösche stück von start
+                alleStapel[start].remove(stueckStart);
+
+                // Füge es im Ziel ein
+                alleStapel[ziel].add(stueckStart);
+            }
 
         }
+
+        // Ausgeben, was die letzten sind
+        StringBuilder ausgabe = new StringBuilder();
+        for (var stapel : alleStapel) {
+            ausgabe.append(stapel.get(stapel.size() - 1));
+        }
+
+        System.out.println(ausgabe);
     }
 }
